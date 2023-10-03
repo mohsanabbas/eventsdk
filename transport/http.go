@@ -8,7 +8,7 @@ import (
 )
 
 type HTTPTransport struct {
-	Client    *http.Client
+	Client    *CustomHTTPClient
 	RetryConf RetryConfig
 }
 

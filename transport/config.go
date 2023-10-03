@@ -10,3 +10,11 @@ type RetryConfig struct {
 	Jitter          bool
 	RetryOnStatus   []int
 }
+
+type HTTPClientConfig struct {
+	SemaphoreBufferSize int
+	Timeout             time.Duration
+	KeepAlive           time.Duration
+	MaxIdleConns        int
+	IdleConnTimeout     time.Duration
+}
