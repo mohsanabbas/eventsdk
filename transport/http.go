@@ -2,6 +2,8 @@ package transport
 
 import (
 	"bytes"
+	"encoding/json"
+	"fmt"
 	"math/rand"
 	"net/http"
 	"time"
@@ -49,6 +51,17 @@ func (h *HTTPTransport) Send(data []byte, endpoint string) error {
 		return err
 	}
 	defer resp.Body.Close()
+	var result map[string]interface{}
+	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
+		return fmt.Errorf("error decoding response: %v", err)
+	}
+
+	jsonData, err := json.MarshalIndent(result, "", "    ")
+	if err != nil {
+		return fmt.Errorf("error marshaling response to JSON: %v", err)
+	}
+
+	fmt.Println(string(jsonData))
 
 	return nil
 }

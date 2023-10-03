@@ -63,7 +63,7 @@ func main() {
 	config := eventsdk.SDKConfig{
 		EnableBatching: true,
 		BatchSize:      10,
-		MaxWaitTime:    1 * time.Minute,
+		MaxWaitTime:    1 * time.Millisecond,
 	}
 	sdk := eventsdk.New("https://httpbin.org/post", httpTransport, eventCodec, config)
 	// Batch process test

@@ -69,10 +69,11 @@ func (j *JSONEventMarshaler) MarshalBatch(events []Event) ([]byte, error) {
 		return nil, fmt.Errorf("Validation errors:\n%s", strings.Join(messages, "\n"))
 	}
 
-	data, err := json.MarshalIndent(events, "", "    ")
-	if err != nil {
-		return nil, fmt.Errorf("failed to marshal events: %v", err)
-	}
-	fmt.Println(string(data))
-	return data, nil
+	//data, err := json.MarshalIndent(events, "", "    ")
+	//if err != nil {
+	//	return nil, fmt.Errorf("failed to marshal events: %v", err)
+	//}
+	//fmt.Println(string(data))
+	//return data, nil
+	return json.Marshal(events)
 }
